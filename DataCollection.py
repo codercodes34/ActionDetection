@@ -5,6 +5,9 @@ import math
 import time
 import os
 import string
+import streamlit as st
+
+FramePlaceholder = st.empty()
 
 # Initialize video capture
 cap = cv2.VideoCapture(1)
@@ -77,11 +80,12 @@ while True:
             imgWhite[hGap:hCal + hGap, :] = imgResize
 
         # Display the cropped image and the white background image
-        cv2.imshow("ImageCrop", imgCrop)
-        cv2.imshow("ImageWhite", imgWhite)
+        #cv2.imshow("ImageCrop", imgCrop)
+        #cv2.imshow("ImageWhite", imgWhite)
+        FramePlaceholder.image(imgWhite, channels="BGR", caption='Processed Image', use_column_width=True)
 
     # Display the original frame with hand detections
-    cv2.imshow("Image", img)
+    #cv2.imshow("Image", img)
 
     # Wait for key press and check if it is a letter key
     key = cv2.waitKey(1)
